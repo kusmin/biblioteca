@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  biblioteca_database:
+    container_name: biblioteca_database
+    build: ./mysql
+    ports:
+      3306:3306
+
