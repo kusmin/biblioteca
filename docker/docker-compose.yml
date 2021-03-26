@@ -2,8 +2,8 @@ version: "3"
 
 services:
   biblioteca_database:
-    container_name: biblioteca_database
     build: ./mysql
+    container_name: biblioteca_database
     ports:
-      3306:3306
+      - 3306:3306
 
