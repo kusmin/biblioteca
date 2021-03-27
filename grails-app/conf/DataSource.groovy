@@ -1,7 +1,7 @@
 dataSource {
     pooled = true
     jmxExport = true
-    driverClassName = "com.mysql.jdbc.Driver"
+    driverClassName = 'com.mysql.jdbc.Driver'
     username = "falandograils"
     password = "falandograils"
 }
@@ -10,6 +10,7 @@ hibernate {
     cache.use_query_cache = false
 //    cache.region.factory_class = 'org.hibernate.cache.SingletonEhCacheRegionFactory' // Hibernate 3
     cache.region.factory_class = 'org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory' // Hibernate 4
+    dialect = 'org.hibernate.dialect.MySQL5InnoDBDialect'
     singleSession = true // configure OSIV singleSession mode
     flush.mode = 'manual' // OSIV session flush mode outside of transactional context
 }
@@ -19,19 +20,19 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://localhost/falandograils?connectTimeout=5000"
+            url = 'jdbc:mysql://localhost:3306/falandograils'
         }
     }
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://localhost/falandograils?connectTimeout=5000"
+            url = 'jdbc:mysql://localhost:3306/falandograils'
         }
     }
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://localhost/falandograils?connectTimeout=5000"
+            url = 'jdbc:mysql://localhost:3306/falandograils'
             properties {
                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
                jmxEnabled = true
@@ -50,7 +51,7 @@ environments {
                testWhileIdle = true
                testOnReturn = false
                jdbcInterceptors = "ConnectionState"
-               defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
+              // defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
             }
         }
     }
